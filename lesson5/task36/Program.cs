@@ -8,22 +8,28 @@ Console.WriteLine("Введите количесто элементов масс
 int len; 
 while (!Int32.TryParse(Console.ReadLine(), out len) || len <= 0)
     Console.WriteLine("Введены некорретные данные. Введите количесто элементов массива (целое положительное число): ");
-int[] mass = new int [len];
-int i;
-Console.Write("Cформирован массив:");
-for (i=0; i < len; i++){
-    mass[i] = new Random().Next();
-    Console.Write($" {mass[i]} ");
+if (len == 1)
+    {
+    Console.WriteLine("Нет элементов с нечетными позициями !");
     }
-Console.WriteLine();
-int SUM = 0;
+else{
+    int[] mass = new int [len];
+    int i;
+    Console.Write("Cформирован массив:");
+    for (i=0; i < len; i++){
+        mass[i] = new Random().Next();
+        Console.Write($" {mass[i]} ");
+        }
+    Console.WriteLine();
+    int SUM = 0;
+    
+    void CHET(){
+        for (i = 1; i < len; i = i + 2){
+            SUM = SUM + mass[i];
+        }
+        Console.WriteLine($"Cумма элементов массива, стоящих на нечётных позициях: {SUM}");
+        return;
+        }
 
-void CHET(){
-    for (i = 1; i < len; i = i + 2){
-        SUM = SUM + mass[i];
+    CHET();
     }
-    Console.WriteLine($"Cумма элементов массива, стоящих на нечётных позициях: {SUM}");
-    return;
-    }
-
-CHET();

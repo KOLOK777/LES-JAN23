@@ -13,13 +13,15 @@ for (i=0; i < len; i++){
     mass[i] = new Random().Next();
     Console.Write($" {mass[i]} ");
     }
-Console.WriteLine();
 
-int max = mass [0];
-int min = mass [0];
+int max;
+int min;
 
 void RAZN()
     {
+    max = mass[0];
+    min = mass[0];
+
     for (i = 1; i < len; i = i++)
         {
         if (mass[i] > max) max = mass[i];

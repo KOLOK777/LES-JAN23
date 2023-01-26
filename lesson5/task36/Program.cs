@@ -6,7 +6,7 @@
 
 Console.WriteLine("Введите количесто элементов массива (целое положительное число): "); 
 int len; 
-while (!Int32.TryParse(Console.ReadLine(), out len))
+while (!Int32.TryParse(Console.ReadLine(), out len) || len <= 0)
     Console.WriteLine("Введены некорретные данные. Введите количесто элементов массива (целое положительное число): ");
 int[] mass = new int [len];
 int i;

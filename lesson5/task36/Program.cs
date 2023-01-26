@@ -23,7 +23,7 @@ else{
     Console.WriteLine();
     int SUM = 0;
     
-    void CHET(){
+    void NECHET(){
         for (i = 1; i < len; i = i + 2){
             SUM = SUM + mass[i];
         }
@@ -31,5 +31,5 @@ else{
         return;
         }
 
-    CHET();
+    NECHET();
     }

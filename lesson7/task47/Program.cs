@@ -8,10 +8,10 @@ Console.WriteLine("Введите число строк массива (цело
 int m; 
 while (!Int32.TryParse(Console.ReadLine(), out m) || m <= 0)
     Console.WriteLine("Введены некорретные данные. Введите число строк массива (целое положительное число) 'm': ");
-Console.WriteLine("Введите число строк массива (целое положительное число) 'n': "); 
+Console.WriteLine("Введите число столбцов массива (целое положительное число) 'n': "); 
 int n; 
 while (!Int32.TryParse(Console.ReadLine(), out n) || n <= 0)
-    Console.WriteLine("Введены некорретные данные. Введите число строк массива (целое положительное число) 'n': ");
+    Console.WriteLine("Введены некорретные данные. Введите число столбцов массива (целое положительное число) 'n': ");
 
 double[,] array = new double [m,n];
 void twoArray()

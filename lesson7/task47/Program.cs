@@ -13,19 +13,26 @@ int n;
 while (!Int32.TryParse(Console.ReadLine(), out n) || n <= 0)
     Console.WriteLine("Введены некорретные данные. Введите число столбцов массива (целое положительное число) 'n': ");
 
-double[,] array = new double [m,n];
-void twoArray()
-{
-    for (int i = 0; i < m; i++)
-    {
-        for (int j = 0; j < n; j++)
-            {
-            array[i,j] = new Random().Next();
-            Console.Write($"{array[i,j]}  ");
-            }
-        Console.WriteLine();
+double[,] GenerateArray(int m, int n){
+    double[,] array = new double[m, n];
+    Random random = new Random();
+    for (int i = 0; i < array.GetLength(0); i++) {
+        for (int j = 0; j < array.GetLength(1); j++) {
+            array[i,j] = random.Next();
+        }
     }
-    return;
+    return array;
 }
 
-twoArray();
+var array = GenerateArray(m, n);
+
+void PrintArray(double[,] array){
+    for (int i = 0; i < array.GetLength(0); i++) {
+        for (int j = 0; j < array.GetLength(1); j++) {
+            Console.Write($"{array[i,j]}  ");
+        }
+        Console.WriteLine();
+    }
+}
+
+PrintArray(array); 

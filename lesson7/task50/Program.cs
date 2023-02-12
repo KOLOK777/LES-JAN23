@@ -6,13 +6,6 @@
 // 8 4 2 4
 // 1,7 -> такого числа в массиве нет (формат ввода произвольный, не обязательно через запятую)
 
-void PrintSingleArray(int[] array){
-    for (int i = 0; i < array.GetLength(0); i++) {
-        Console.Write($"{array[i]}  ");
-        }
-        Console.WriteLine();
-    }
-
 void PrintArray(int[,] array){
     for (int i = 0; i < array.GetLength(0); i++) {
         for (int j = 0; j < array.GetLength(1); j++) {
@@ -62,5 +55,3 @@ if (numbers[0] < 1 || numbers[0] > m || numbers[1] < 1 || numbers[1] > n)
     Console.WriteLine("Такого числа в массиве нет.");
 else 
     Console.WriteLine($"Число в массиве по указанным вами элементам: {array[numbers[0]-1,numbers[1]-1]}");
-PrintSingleArray(numbers);
-

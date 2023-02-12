@@ -6,6 +6,33 @@
 // 8 4 2 4
 // 1,7 -> такого числа в массиве нет (формат ввода произвольный, не обязательно через запятую)
 
+void PrintSingleArray(int[] array){
+    for (int i = 0; i < array.GetLength(0); i++) {
+        Console.Write($"{array[i]}  ");
+        }
+        Console.WriteLine();
+    }
+
+void PrintArray(int[,] array){
+    for (int i = 0; i < array.GetLength(0); i++) {
+        for (int j = 0; j < array.GetLength(1); j++) {
+            Console.Write($"{array[i,j]}  ");
+        }
+        Console.WriteLine();
+    }
+}
+
+int[,] GenerateArray(int m, int n){
+    int[,] array = new int[m, n];
+    Random random = new Random();
+    for (int i = 0; i < array.GetLength(0); i++) {
+        for (int j = 0; j < array.GetLength(1); j++) {
+            array[i,j] = random.Next();
+        }
+    }
+    return array;
+}
+
 Console.WriteLine("Введите число строк массива (целое положительное число) 'm': "); 
 int m; 
 while (!Int32.TryParse(Console.ReadLine(), out m) || m <= 0)
@@ -15,29 +42,25 @@ int n;
 while (!Int32.TryParse(Console.ReadLine(), out n) || n <= 0)
     Console.WriteLine("Введены некорретные данные. Введите число строк массива (целое положительное число) 'n': ");
 
-double[,] array = new double [m,n];
-void twoArray()
-{
-    for (int i = 0; i < m; i++)
-    {
-        for (int j = 0; j < n; j++)
-            {
-            array[i,j] = new Random().Next();
-            Console.Write($"{array[i,j]}  ");
-            }
-        Console.WriteLine();
-    if 
+Console.WriteLine("Введите позиции элемента в двумерном массиве (через пробел, запятую или точку): ");
+string elements = Console.ReadLine()!;
+string[] numberStrings = elements.Split(" ");
+if (numberStrings.Length == 1) 
+    numberStrings = elements.Split(".");
+if (numberStrings.Length == 1) 
+    numberStrings = elements.Split(",");
+int[] numbers = new int[numberStrings.Length];
 
-    }
-    return;
-}
+for (int i = 0; i < numbers.Length; i++)
+    numbers[i] = int.Parse(numberStrings[i]);
 
-twoArray();
+Console.WriteLine("Сгенерирован следующий двумерный массив: ");
+var array = GenerateArray(m, n);
+PrintArray(array);
 
-Console.WriteLine("Введите число из массива: "); 
-double X; 
-while (!Int32.TryParse(Console.ReadLine(), out X))
-    Console.WriteLine("Введены некоректные данные. Введите число из массива: ");
+if (numbers[0] < 1 || numbers[0] > m || numbers[1] < 1 || numbers[1] > n)
+    Console.WriteLine("Такого числа в массиве нет.");
+else 
+    Console.WriteLine($"Число в массиве по указанным вами элементам: {array[numbers[0]-1,numbers[1]-1]}");
+PrintSingleArray(numbers);
 
-
-array[1,2]

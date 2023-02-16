@@ -25,12 +25,12 @@ int[,,] GenerateArray(int m, int n, int k){
     for (int i = 0; i < array.GetLength(0); i++) {
         for (int j = 0; j < array.GetLength(1); j++) {
             for (int l = 0; l < array.GetLength(2); l++) {
-                array[i,j,l] = random.Next(-99,100);
+                array[i,j,l] = random.Next(0,15);
                     for (int p = 0; p < i; p++) {
                         for (int q = 0; q < j; q++) {
                             for (int r = 0; r < l; r++) {
                                 if (array[i,j,l] == array[p,q,r])  {
-                                    array[i,j,l] = random.Next(-99,100);
+                                    array[i,j,l] = random.Next(0,50);
                                     p = 0;
                                     q = 0;
                                     r = 0;

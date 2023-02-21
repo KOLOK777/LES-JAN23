@@ -14,40 +14,41 @@ Console.WriteLine("Введите число - второй параметр т�
 int n; 
 while (!Int32.TryParse(Console.ReadLine(), out n) || n <= 0)
     Console.WriteLine("Введены некорретные данные. Введите число - второй параметр трехмерного массива (целое положительное число) 'n': ");
-Console.WriteLine("Введите число - третий параметр трехмерного массива (целое положительное число) 'm': ");
+Console.WriteLine("Введите число - третий параметр трехмерного массива (целое положительное число) 'k': ");
 int k;
 while (!Int32.TryParse(Console.ReadLine(), out k) || k <= 0)
-    Console.WriteLine("Введены некорретные данные. Введите число - третий параметр трехмерного массива (целое положительное число) 'n': ");
+    Console.WriteLine("Введены некорретные данные. Введите число - третий параметр трехмерного массива (целое положительное число) 'k': ");
 
 int[,,] GenerateArray(int m, int n, int k){
     int[,,] array = new int[m, n, k];
     Random random = new Random();
+    bool check;
+    int unique = 0;
     for (int i = 0; i < array.GetLength(0); i++) {
         for (int j = 0; j < array.GetLength(1); j++) {
             for (int l = 0; l < array.GetLength(2); l++) {
-                array[i,j,l] = random.Next(0,15);
-                    for (int p = 0; p < i; p++) {
-                        for (int q = 0; q < j; q++) {
-                            for (int r = 0; r < l; r++) {
-                                if (array[i,j,l] == array[p,q,r])  {
-                                    array[i,j,l] = random.Next(0,50);
-                                    p = 0;
-                                    q = 0;
-                                    r = 0;
-                                }
-                                }
+                check = false;
+                while (check == false) {
+                    check = true;
+                    unique = random.Next(-99,100);
+                        foreach (int p in array) {
+                            if (p == unique) {
+                                check = false;
                         }
                     }
+                }
+                array[i,j,l] = unique;
             }
         }
     }
     return array;
 }
 
+
 void PrintArray(int[,,] array){
     for (int i = 0; i < array.GetLength(0); i++) {
         for (int j = 0; j < array.GetLength(1); j++) {
-            for (int l = 0; j < array.GetLength(2); j++) {
+            for (int l = 0; l < array.GetLength(2); l++) {
                 Console.Write($"{array[i,j,l]}({i},{j},{l})  ");
         }
         Console.WriteLine();
@@ -55,6 +56,10 @@ void PrintArray(int[,,] array){
     }
 }
 
-var array = GenerateArray(m, n, k);
-Console.WriteLine("Сформирован массив: ");
-PrintArray(array);
+if (m*n*k <= 199) {
+    var array = GenerateArray(m, n, k);
+    Console.WriteLine("Сформирован массив неповторяющихся чисел: ");
+    PrintArray(array);
+    }
+else
+    Console.WriteLine("Введенные значения не позволяют сформировать двузначные уникальные числа !");

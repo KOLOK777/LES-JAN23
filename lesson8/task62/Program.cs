@@ -5,10 +5,10 @@
 // 11 16 15 06
 // 10 09 08 07
 
-Console.WriteLine("Введите число строк/столбцов массива (целое положительное число) 'm': "); 
+Console.WriteLine("Введите число строк/столбцов массива (целое положительное число больше 1) 'm': "); 
 int N; 
-while (!Int32.TryParse(Console.ReadLine(), out N) || N <= 0)
-    Console.WriteLine("Введены некорретные данные. Введите число строк/столбцов массива (целое положительное число) 'm': ");
+while (!Int32.TryParse(Console.ReadLine(), out N) || N <= 1)
+    Console.WriteLine("Введены некорретные данные. Введите число строк/столбцов массива (целое положительное число больше 1) 'm': ");
 int M = N;
 int[,] GenerateSpyralArray(int N, int M){
     int[,] array = new int[N, M];

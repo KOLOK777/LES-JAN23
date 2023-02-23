@@ -5,18 +5,19 @@
 
 Console.WriteLine("Введите количество чисел, натуральное число (целое положительное число больше 0) 'N': "); 
 int N; 
-while (!Int32.TryParse(Console.ReadLine(), out N) || N <= 1)
+while (!Int32.TryParse(Console.ReadLine(), out N))
     Console.WriteLine("Введены некорретные данные. Введите количество чисел, натуральное число (целое положительное число больше 0) 'N': ");
 
 void PrintDigitRow(int N) {
-    if (N <= 0) return;
-    
+    if (N <= 0) {
+        Console.WriteLine("Введено ненатуральное число. ");
+        return;
+    }
     else if (N == 1)
-        Console.Write($"{N}");
+        Console.Write($"{N}.");
     else
-        PrintDigitRow(N - 1);
         Console.Write($"{N}, ");
-    
+        PrintDigitRow(N - 1);
         }
 
 Console.Write($"N = {N} ->  ");

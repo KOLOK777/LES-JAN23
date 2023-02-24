@@ -20,7 +20,7 @@ int CalcAmount(int N, int M) {
         return N + CalcAmount(N - 1, M);
         }
     else if (N == M) {
-        return 0;    
+        return Math.Min(M, N);    
     }
 }
 

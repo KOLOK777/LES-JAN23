@@ -14,14 +14,13 @@ while (!Int32.TryParse(Console.ReadLine(), out M) || M < 1)
 
 int CalcAmount(int N, int M) {
     if (M > N) {
-        return M + CalcAmount(N, M - 1);
+        return (M + CalcAmount(N, M - 1));
         }
-    else if (N > M) {
-        return N + CalcAmount(N - 1, M);
+    else if (M < N) {
+        return (N + CalcAmount(N - 1, M));
         }
-    else if (N == M) {
-        return Math.Min(M, N);    
+        else
+            return M;    
     }
-}
 
-Console.WriteLine($"Сумма числового рядо между числами {M} и {N} равна : {CalcAmount(N, M)}");
+Console.Write($"Сумма чисел от {N} к {M} равна: {CalcAmount(N, M)}.");

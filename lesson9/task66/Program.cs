@@ -5,11 +5,11 @@
 
 Console.WriteLine("Введите количество чисел, натуральное число (целое положительное число больше 0) 'N': "); 
 int N; 
-while (!Int32.TryParse(Console.ReadLine(), out N) || N < 1)
+while (!Int32.TryParse(Console.ReadLine(), out N) || N < 0)
     Console.WriteLine("Введены некорретные данные. Введите количество чисел, натуральное число (целое положительное число больше 0) 'N': ");
 Console.WriteLine("Введите количество чисел, натуральное число (целое положительное число больше 0) 'M': "); 
 int M; 
-while (!Int32.TryParse(Console.ReadLine(), out M) || M < 1)
+while (!Int32.TryParse(Console.ReadLine(), out M) || M < 0)
     Console.WriteLine("Введены некорретные данные. Введите количество чисел, натуральное число (целое положительное число больше 0) 'M': ");
 
 int CalcAmount(int N, int M) {

@@ -10,7 +10,7 @@ while (!Int32.TryParse(Console.ReadLine(), out N))
 
 void PrintDigitRow(int N) {
     if (N <= 0) {
-        Console.WriteLine("Введено ненатуральное число. ");
+        Console.WriteLine("Введено ненатуральное число . ");
         return;
     }
     else if (N == 1)

@@ -1,4 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿// 
 Console.WriteLine("Введите число строк массива (целое положительное число) 'm': "); 
 int m; 
 while (!Int32.TryParse(Console.ReadLine(), out m) || m <= 0)
@@ -56,5 +56,6 @@ var array = GenerateArray(m, n);
 Console.WriteLine("Сформирован массив: ");
 PrintArray(array);
 var array2 = SortLineArray(array);
-Console.WriteLine("Массив отсортирован: ");
+Console.WriteLine("Массив отсортирован:  ");
+
 PrintArray(array2); 

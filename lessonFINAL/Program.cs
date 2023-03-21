@@ -1,61 +1,47 @@
-﻿// 
-Console.WriteLine("Введите число строк массива (целое положительное число) 'm': "); 
-int m; 
-while (!Int32.TryParse(Console.ReadLine(), out m) || m <= 0)
-    Console.WriteLine("Введены некорретные данные. Введите число строк массива (целое положительное число) 'm': ");
-Console.WriteLine("Введите число столбцов массива (целое положительное число) 'n': "); 
-int n; 
-while (!Int32.TryParse(Console.ReadLine(), out n) || n <= 0)
-    Console.WriteLine("Введены некорретные данные. Введите число столбцов массива (целое положительное число) 'n': ");
-
-int[,] GenerateArray(int m, int n){
-    int[,] array = new int[m, n];
-    Random random = new Random();
-    for (int i = 0; i < array.GetLength(0); i++) {
-        for (int j = 0; j < array.GetLength(1); j++) {
-            array[i,j] = random.Next();
-        }
+﻿string[] UserArray(int N) {
+    string[] array = new string[N];
+    for (int i = 0; i < array.Length; i++) {
+        Console.Write($"Введите элемент номер {i+1}: ");
+        array[i] = Console.ReadLine()!;
     }
     return array;
 }
 
-void PrintArray(int[,] array){
-    for (int i = 0; i < array.GetLength(0); i++) {
-        for (int j = 0; j < array.GetLength(1); j++) {
-            Console.Write($"{array[i,j]}  ");
+string[] ThreeSymbolArray(string[] userArray) {
+    int count = 0;
+    for (int i = 0; i < userArray.Length; i++) {
+        if (userArray[i].Length <= 3)
+            count++;
         }
-        Console.WriteLine();
-    }
+    string[] array2 = new string[count];
+    count = 0;
+    for (int j = 0; j < userArray.Length; j++) {
+        if (userArray[j].Length <= 3) {
+            array2[count] = userArray[j];
+            count++;
+        }
+    }    
+    return array2;
 }
 
-int[,] SortLineArray(int[,] array){
-    int[,] array2 = array;
-    int maxIndex;
-    int max;
-    int count; 
-    for (int i = 0; i < array2.GetLength(0); i++) {
-        for (int j = 1; j < array2.GetLength(1); j++) {
-            maxIndex = j - 1;
-            count = j;
-            max = array2[i,j - 1];
-            while (count < array2.GetLength(1)) {
-                if (array2[i,count] > max) {
-                max = array2[i,count];
-                maxIndex = count;
-                }
-                array2[i,maxIndex] = array2[i,j - 1];
-                array2[i,j - 1] = max;
-                count++;
-            }
-        }
+void PrintArray(string[] printArr) {
+    Console.Write("[");
+    for (int i = 0; i < printArr.Length; i++) {
+        if (i == printArr.Length - 1)
+            Console.Write($"{printArr[i]}");
+        else
+            Console.Write($"{printArr[i]}, ");
     }
-return array2;
+    Console.WriteLine("]");
 }
 
-var array = GenerateArray(m, n);
-Console.WriteLine("Сформирован массив: ");
-PrintArray(array);
-var array2 = SortLineArray(array);
-Console.WriteLine("Массив отсортирован:  ");
-
-PrintArray(array2); 
+Console.Write("Введите количество элементов массива (целое, больше 0): ");
+int.TryParse(Console.ReadLine(), out int N);
+while (N <= 0) {
+    Console.WriteLine("Введите корректное число (целое, боьше 0): ");
+    int.TryParse(Console.ReadLine(), out N);
+}
+string[] userArray = UserArray(N);
+string[] threeSymbolArray = ThreeSymbolArray(userArray);
+Console.WriteLine("Полученный массив:");
+PrintArray(threeSymbolArray);
